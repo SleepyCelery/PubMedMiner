@@ -23,6 +23,11 @@ class RecordItem:
                 self.record_dict[prefix] = [content]
             else:
                 self.record_dict[prefix] = self.record_dict[prefix] + [content]
+        if 'MH' in self.record_dict.keys():
+            mesh_prefix = []
+            for mesh_item in self.record_dict['MH']:
+                mesh_prefix.append(mesh_item.split('/')[0])
+            self.record_dict['MH_PREFIX'] = mesh_prefix
 
     def __getitem__(self, item):
         try:
